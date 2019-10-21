@@ -4,7 +4,7 @@ from ppa1 import bmi, bmi_calculator, distance, distance_calculator, log_bmi, lo
 app = Flask(__name__)
 
 @app.route('/calcbmi', methods=['POST'])
-def calc_bmi() -> str:
+def calc_bmi():
     feet = request.form['feet']
     inches = request.form['inches']
     pounds = request.form['pounds']
@@ -15,7 +15,7 @@ def calc_bmi() -> str:
 
 
 @app.route('/calcdistance', methods=['POST'])
-def calc_distance() -> str:
+def calc_distance():
     x1 = request.form['x1']
     x2 = request.form['x2']
     y1 = request.form['y1']
@@ -27,7 +27,7 @@ def calc_distance() -> str:
 
 
 @app.route('/bmi')
-def get_bmi_table() -> 'html':
+def get_bmi_table():
     contents = []
     with open('bmi.log') as log:
         for line in log:
@@ -39,7 +39,7 @@ def get_bmi_table() -> 'html':
 
 
 @app.route('/distance')
-def get_distance_table() -> 'html':
+def get_distance_table():
     contents = []
     with open('distance.log') as log:
         for line in log:
@@ -52,7 +52,7 @@ def get_distance_table() -> 'html':
 
 @app.route('/')
 @app.route('/entry')
-def entry_page() -> 'html':
+def entry_page():
     return render_template('entry.html', the_title='PPA2 Entry Page')
 
 

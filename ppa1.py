@@ -1,7 +1,7 @@
 import math
 import datetime
 
-def bmi(feet: int, inches: int, pounds: int) -> str:
+def bmi(feet, inches, pounds):
     if not isinstance(feet, int) or not isinstance(inches, int) or not isinstance(pounds, int):
         return "Invalid input"
     if feet < 0 or inches < 0 or pounds < 0:
@@ -21,7 +21,7 @@ def bmi(feet: int, inches: int, pounds: int) -> str:
     return 'Your BMI is ' + str(bmi) + ', making you ' + appraisal
 
 
-def bmi_calculator(feet: int, inches: int, pounds: int) -> int:
+def bmi_calculator(feet, inches, pounds):
     kilos = pounds * 0.45
     meters = ((feet * 12) + inches) * 0.025
     meters = meters * meters
@@ -29,7 +29,7 @@ def bmi_calculator(feet: int, inches: int, pounds: int) -> int:
     return bmi
 
 
-def retirement(age: int, salary: int, save: int, goal: int) -> str:
+def retirement(age, salary, save, goal):
     if not isinstance(age, int) or not isinstance(salary, int) or not isinstance(save, int) or not isinstance(goal, int):
         return 'Invalid input'
     if age >= 100:
@@ -42,7 +42,7 @@ def retirement(age: int, salary: int, save: int, goal: int) -> str:
     return "You'll reach your goal at age " + str(goal_age)
 
 
-def ret_calculator(age: int, salary: int, save: int, goal: int) -> int:
+def ret_calculator(age, salary, save, goal):
     percent = save * 1.35 / 100
     savings = 0
     goal_age = age
@@ -52,7 +52,7 @@ def ret_calculator(age: int, salary: int, save: int, goal: int) -> int:
     return goal_age
 
 
-def distance(x1: float, x2: float, y1: float, y2: float) -> str:
+def distance(x1, x2, y1, y2) -> str:
     if not isinstance(x1, float) or not isinstance(x2, float) or not isinstance(y1, float) or not isinstance(y2, float):
         return 'Invalid input'
     #Distance function. Also do DB stuff here, probably.
@@ -60,11 +60,11 @@ def distance(x1: float, x2: float, y1: float, y2: float) -> str:
     return 'The distance is ' + str(distance)
 
 
-def distance_calculator(x1: float, x2: float, y1: float, y2: float) -> float:
+def distance_calculator(x1, x2, y1, y2):
     return math.sqrt(((x2-x1)*(x2-x1)) + ((y2-y1)*(y2-y1)))
 
 
-def split_tip(guests: int, bill: float) -> str:
+def split_tip(guests, bill):
     if not isinstance(guests, int) or not isinstance(bill, float):
         return 'Invalid input'
     guest_pay = ''
@@ -92,18 +92,18 @@ def split_tip(guests: int, bill: float) -> str:
     return guest_pay
 
 
-def splitter(guests: int, bill: float) -> float:
+def splitter(guests, bill):
     split = math.floor(100*((bill*1.15)/guests))
     split /= 100
     return split
 
 
-def log_bmi(feet: int, inches: int, pounds: int, result: float) -> None:
+def log_bmi(feet, inches, pounds, result):
     with open('bmi.log', 'a') as log:
         print(feet, inches, pounds, result, str(datetime.datetime.now()), file=log, sep='|')
 
 
-def log_distance(x1: float, x2: float, y1: float, y2: float, result: float) -> None:
+def log_distance(x1, x2, y1, y2, result):
     with open('distance.log', 'a') as log:
         print(x1, x2, y1, y2, result, str(datetime.datetime.now()), file=log, sep='|')
 
