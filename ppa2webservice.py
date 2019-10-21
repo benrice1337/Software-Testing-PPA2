@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, escape
-from ppa1 import bmi, bmi_calculator, distance, log_bmi, log_distance
+from ppa1 import bmi, bmi_calculator, distance, distance_calculator, log_bmi, log_distance
 
 app = Flask(__name__)
 
@@ -22,7 +22,7 @@ def calc_distance() -> str:
     y2 = request.form['y2']
     title = 'Here are your results:'
     results = distance(x1, x2, y1, y2)
-    log_distance(x1, x2, y1, y2, results)
+    log_distance(x1, x2, y1, y2, distance_calculator(x1, x2, y1, y2))
     return render_template('distance_results.html', the_x1=x1, the_x2=x2, the_y1=y1, the_y2=y2, the_title=title, the_results=results,)
 
 

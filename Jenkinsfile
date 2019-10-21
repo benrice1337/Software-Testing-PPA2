@@ -11,5 +11,15 @@ pipeline {
                 sh 'python3 -m py_compile ppa1.py ppa2webservice.py'
             }
         }
+        stage('Test') {
+            agent{
+                docker {
+                    image 'qnib/pytest'
+                }
+            }
+            steps {
+                sh 'pytest'
+            }
+        }
     }
 }
