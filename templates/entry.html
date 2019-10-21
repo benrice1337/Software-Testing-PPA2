@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+<h2>{{ the_title }}</h2>
+
+<form method='POST' action='/calcbmi'>
+<table>
+<p>Use this form to submit values to the BMI function (integers only):</p>
+<tr><td>Feet:</td><td><input name='feet' type='TEXT' width='60'></td></tr>
+<tr><td>Inches:</td><td><input name='inches' type='TEXT'></td></tr>
+<tr><td>Pounds:</td><td><input name='pounds' type='TEXT'></td></tr>
+</table>
+<p>When you're ready, click this button:</p>
+<p><input value='Do it!' type='SUBMIT'></p>
+</form>
+
+<form method='POST' action='/calcdistance'>
+<table>
+<p>Use this form to submit values to the distance function (doubles only):</p>
+<tr><td>X1:</td><td><input name='x1' type='TEXT' width='60'></td></tr>
+<tr><td>X2:</td><td><input name='x2' type='TEXT'></td></tr>
+<tr><td>Y1:</td><td><input name='y1' type='TEXT'></td></tr>
+<tr><td>Y2:</td><td><input name='y2' type='TEXT'></td></tr>
+</table>
+<p>When you're ready, click this button:</p>
+<p><input value='Do it!' type='SUBMIT'></p>
+</form>
+
+{% endblock %}
