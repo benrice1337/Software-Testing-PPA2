@@ -52,7 +52,7 @@ def ret_calculator(age, salary, save, goal):
     return goal_age
 
 
-def distance(x1, x2, y1, y2) -> str:
+def distance(x1, x2, y1, y2):
     if not isinstance(x1, float) or not isinstance(x2, float) or not isinstance(y1, float) or not isinstance(y2, float):
         return 'Invalid input'
     #Distance function. Also do DB stuff here, probably.
