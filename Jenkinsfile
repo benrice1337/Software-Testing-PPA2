@@ -15,6 +15,7 @@ pipeline {
         stage('Test') {
             agent{
                 docker {
+                    image 'python:3.8.0-buster'
                     image 'qnib/pytest'
                 }
             }
