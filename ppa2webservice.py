@@ -11,7 +11,7 @@ def calc_bmi():
     feet = request.form['feet']
     inches = request.form['inches']
     pounds = request.form['pounds']
-    title = 'Here are your results:'
+    title = 'Results:'
     results = bmi(int(feet), int(inches), int(pounds))
     return render_template('bmi_results.html', the_feet=feet, the_inches=inches, the_pounds=pounds, the_title=title, the_results=results,)
 
@@ -22,9 +22,9 @@ def calc_distance():
     x2 = request.form['x2']
     y1 = request.form['y1']
     y2 = request.form['y2']
-    title = 'Here are your results:'
+    title = 'Results:'
     results = distance(float(x1), float(x2), float(y1), float(y2))
-    return render_template('distance_results.html', the_x1=x1, the_x2=x2, the_y1=y1, the_y2=y2, the_title=title, the_results=results,)
+    return render_template('distance_results.html', the_x1=x1, the_x2=x2, the_y1=y1, the_y2=y2, the_title=title, the_results=str(results),)
 
 
 @app.route('/bmi')

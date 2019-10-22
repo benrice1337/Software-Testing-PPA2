@@ -20,7 +20,7 @@ pipeline {
             }
             steps {
                 sh 'pip install mysql-connector'
-                sh 'pytest'
+                sh 'pytest test_ppa1.py'
             }
         }
     }
