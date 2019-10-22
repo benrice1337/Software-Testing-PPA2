@@ -15,12 +15,11 @@ pipeline {
         stage('Test') {
             agent{
                 docker {
-                    image 'python:3.8.0-buster'
                     image 'qnib/pytest'
                 }
             }
             steps {
-                sh 'python3 setup.py install'
+                sh 'python setup.py install'
                 sh 'pytest'
             }
         }
