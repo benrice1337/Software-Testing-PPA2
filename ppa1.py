@@ -1,5 +1,6 @@
 import math
 import datetime
+from DBcm import UseDatabase
 
 def bmi(feet, inches, pounds):
     if not isinstance(feet, int) or not isinstance(inches, int) or not isinstance(pounds, int):
@@ -18,6 +19,7 @@ def bmi(feet, inches, pounds):
         appraisal = "Normal"
     elif bmi < 30:
         appraisal = "Overweight"
+    log_bmi(feet, inches, pounds, bmi)
     return 'Your BMI is ' + str(bmi) + ', making you ' + appraisal
 
 
@@ -57,6 +59,7 @@ def distance(x1, x2, y1, y2):
         return 'Invalid input'
     #Distance function. Also do DB stuff here, probably.
     distance = distance_calculator(x1, x2, y1, y2)
+    log_distance(x1, x2, y1, y2, distance)
     return 'The distance is ' + str(distance)
 
 
@@ -98,15 +101,18 @@ def splitter(guests, bill):
     return split
 
 
-#Jenkins doesn't like these functions. They'll likely change anyway, so commenting them out for now.
-#def log_bmi(feet, inches, pounds, result):
-#    with open('bmi.log', 'a') as log:
-#        print(str(feet) + str(inches) + str(pounds) + str(result) + str(datetime.datetime.now()), file=log, sep='|')
+def log_bmi(feet, inches, pounds, result):
+    dbconfig = {'host': 'localhost:6969', 'user': 'PPA2', 'password': 'PPA2PW', 'database': 'PPA2DB',}
+    with UseDatabase(dbconfig) as cursor:
+        _SQL = "INSERT INTO BmiLog (Feet, Inches, Pounds, Result, Timestamp) VALUES (%s, %s, %s, %s, %s)"
+        cursor.execute(_SQL, (str(feet), str(inches), str(pounds), str(result), str(datetime.datetime.now()), ))
 
 
-#def log_distance(x1, x2, y1, y2, result):
-#    with open('distance.log', 'a') as log:
-#        print(str(x1) + str(x2) + str(y1) + str(y2) + str(result) + str(datetime.datetime.now()), file=log, sep='|')
+def log_distance(x1, x2, y1, y2, result):
+    dbconfig = {'host': 'localhost:6969', 'user': 'PPA2', 'password': 'PPA2PW', 'database': 'PPA2DB',}
+    with UseDatabase(dbconfig) as cursor:
+        _SQL = "INSERT INTO DistanceLog (X1, X2, Y1, Y2, Result, Timestamp) VALUES (%s, %s, %s, %s, %s)"
+        cursor.execute(_SQL, (str(x1), str(x2), str(y1), str(y2), str(result), str(datetime.datetime.now()), ))
 
 
 def main_loop():

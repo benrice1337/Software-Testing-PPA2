@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request, redirect, escape
 from ppa1 import bmi, bmi_calculator, distance, distance_calculator, log_bmi, log_distance
+from DBcm import UseDatabase
 
 app = Flask(__name__)
+
+app.config['dbconfig'] = {'host': 'localhost:6969', 'user': 'PPA2', 'password': 'PPA2PW', 'database': 'PPA2DB',}
 
 @app.route('/calcbmi', methods=['POST'])
 def calc_bmi():
@@ -28,24 +31,20 @@ def calc_distance():
 
 @app.route('/bmi')
 def get_bmi_table():
-    contents = []
-    with open('bmi.log') as log:
-        for line in log:
-            contents.append([])
-            for item in line.split('|'):
-                contents[-1].append(escape(item))
+    with UseDatabase(app.config['dbconfig']) as cursor:
+        _SQL = "SELECT Feet, Inches, Pounds, Result, Timestamp FROM BmiLog"
+        cursor.execute(_SQL)
+        contents = cursor.fetchall()
     titles = {'Feet', 'Inches', 'Pounds', 'Result', 'Timestamp'}
     return render_template('log.html', the_title='BMI Log', the_row_titles=titles, the_data=contents,)
 
 
 @app.route('/distance')
 def get_distance_table():
-    contents = []
-    with open('distance.log') as log:
-        for line in log:
-            contents.append([])
-            for item in line.split('|'):
-                contents[-1].append(escape(item))
+    with UseDatabase(app.config['dbconfig']) as cursor:
+        _SQL = "SELECT x1, x2, y1, y2, Result, Timestamp FROM DistanceLog"
+        cursor.execute(_SQL)
+        contents = cursor.fetchall()
     titles = {'X1', 'X2', 'Y1', 'Y2', 'Result', 'Timestamp'}
     return render_template('log.html', the_title='Distance Log', the_row_titles=titles, the_data=contents,)
 

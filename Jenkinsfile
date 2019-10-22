@@ -9,7 +9,7 @@ pipeline {
             }
             steps {
                 sh 'pip3 install mysql-connector'
-                sh 'python3 -m py_compile ppa1.py ppa2webservice.py'
+                sh 'python3 -m py_compile ppa1.py ppa2webservice.py DBcm.py'
             }
         }
         stage('Test') {
