@@ -19,10 +19,10 @@ def bmi(feet, inches, pounds):
         appraisal = "Normal"
     elif bmi < 30:
         appraisal = "Overweight"
-    try:
-        log_bmi(feet, inches, pounds, bmi)
-    except Exception as err:
-        print('Failed to log. Error: ' + str(err))
+    #try:
+    log_bmi(feet, inches, pounds, bmi)
+    #except Exception as err:
+    #    print('Failed to log. Error: ' + str(err))
     return 'Your BMI is ' + str(bmi) + ', making you ' + appraisal
 
 
