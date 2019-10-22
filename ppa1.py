@@ -107,7 +107,7 @@ def splitter(guests, bill):
 
 
 def log_bmi(feet, inches, pounds, result):
-    dbconfig = {'host': 'mysql', 'user': 'root', 'password': 'root', 'database': 'PPA2DB',}
+    dbconfig = {'host': 'localhost', 'user': 'PPA2', 'password': 'PPA2PW', 'database': 'PPA2DB',}
     with UseDatabase(dbconfig) as cursor:
         _SQL = "INSERT INTO BmiLog (Feet, Inches, Pounds, Result, Timestamp) VALUES (%s, %s, %s, %s, %s)"
         cursor.execute(_SQL, (str(feet), str(inches), str(pounds), str(result), str(datetime.datetime.now()), ))
