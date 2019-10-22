@@ -19,7 +19,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'python setup.py install'
+                sh 'pip install mysql-connector'
                 sh 'pytest'
             }
         }
