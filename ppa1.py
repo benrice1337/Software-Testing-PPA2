@@ -116,7 +116,7 @@ def log_distance(x1, x2, y1, y2, result):
 
 
 def main_loop():
-    while true:
+    while True:
         print("Pick a function:")
         print("1. Body Mass Index")
         print("2. Retirement")
