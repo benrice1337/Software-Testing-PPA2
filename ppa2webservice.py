@@ -4,7 +4,7 @@ from DBcm import UseDatabase
 
 app = Flask(__name__)
 
-app.config['dbconfig'] = {'host': 'localhost:6969', 'user': 'PPA2', 'password': 'PPA2PW', 'database': 'PPA2DB',}
+app.config['dbconfig'] = {'host': 'localhost:3306', 'user': 'PPA2', 'password': 'PPA2PW', 'database': 'PPA2DB',}
 
 @app.route('/calcbmi', methods=['POST'])
 def calc_bmi():
