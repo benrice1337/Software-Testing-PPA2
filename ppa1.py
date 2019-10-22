@@ -132,7 +132,7 @@ def main_loop():
             inches = input("> ")
             print("How many pounds do you weight (integer only)?")
             pounds = input("> ")
-            print(bmi(feet, inches, pounds))
+            print(bmi(int(feet), int(inches), int(pounds)))
         elif choice == '2':
             print("How old are you (integer only)?")
             age = input("> ")
@@ -142,7 +142,7 @@ def main_loop():
             save = input("> ")
             print("What is your goal (integer only)?")
             goal = input("> ")
-            print(retirement(age, salary, save, goal))
+            print(retirement(int(age), int(salary), int(save), int(goal)))
         elif choice == '3':
             print("X1 coordinate:")
             x1 = input("> ")
@@ -152,13 +152,13 @@ def main_loop():
             x2 = input("> ")
             print("Y2 coordinate:")
             y2 = input("> ")
-            print(distance(x1, x2, y1, y2))
+            print(distance(float(x1), float(x2), float(y1), float(y2)))
         elif choice == '4':
             print("How many guests are there (integer only)?")
             guests = input("> ")
             print("What is the bill, excluding tax?")
-            bill = round(input("> "), 3)
-            print(split_tip(guests, bill))
+            bill = round(float(input("> ")), 3)
+            print(split_tip(int(guests), bill))
         elif choice == '5':
             print("Bye!")
             return
