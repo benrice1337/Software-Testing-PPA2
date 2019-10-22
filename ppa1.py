@@ -100,12 +100,12 @@ def splitter(guests, bill):
 
 def log_bmi(feet, inches, pounds, result):
     with open('bmi.log', 'a') as log:
-        print(str(feet), str(inches), str(pounds), str(result), str(datetime.datetime.now()), file = log, sep='|')
+        print(str(feet) + str(inches) + str(pounds) + str(result) + str(datetime.datetime.now()), file=log, sep='|')
 
 
 def log_distance(x1, x2, y1, y2, result):
     with open('distance.log', 'a') as log:
-        print(str(x1), str(x2), str(y1), str(y2), str(result), str(datetime.datetime.now()), file = log, sep='|')
+        print(str(x1) + str(x2) + str(y1) + str(y2) + str(result) + str(datetime.datetime.now()), file=log, sep='|')
 
 
 def main_loop():
