@@ -98,14 +98,15 @@ def splitter(guests, bill):
     return split
 
 
-def log_bmi(feet, inches, pounds, result):
-    with open('bmi.log', 'a') as log:
-        print(str(feet) + str(inches) + str(pounds) + str(result) + str(datetime.datetime.now()), file=log, sep='|')
+#Jenkins doesn't like these functions. They'll likely change anyway, so commenting them out for now.
+#def log_bmi(feet, inches, pounds, result):
+#    with open('bmi.log', 'a') as log:
+#        print(str(feet) + str(inches) + str(pounds) + str(result) + str(datetime.datetime.now()), file=log, sep='|')
 
 
-def log_distance(x1, x2, y1, y2, result):
-    with open('distance.log', 'a') as log:
-        print(str(x1) + str(x2) + str(y1) + str(y2) + str(result) + str(datetime.datetime.now()), file=log, sep='|')
+#def log_distance(x1, x2, y1, y2, result):
+#    with open('distance.log', 'a') as log:
+#        print(str(x1) + str(x2) + str(y1) + str(y2) + str(result) + str(datetime.datetime.now()), file=log, sep='|')
 
 
 def main_loop():
