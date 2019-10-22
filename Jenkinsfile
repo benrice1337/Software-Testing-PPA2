@@ -8,7 +8,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'python3 setup.py install'
+                sh 'pip3 install mysql-connector'
                 sh 'python3 -m py_compile ppa1.py ppa2webservice.py'
             }
         }
