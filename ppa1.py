@@ -102,14 +102,14 @@ def splitter(guests, bill):
 
 
 def log_bmi(feet, inches, pounds, result):
-    dbconfig = {'host': 'localhost', 'user': 'root', 'password': 'root', 'database': 'PPA2DB',}
+    dbconfig = {'host': '127.0.0.1', 'user': 'root', 'password': 'root', 'database': 'PPA2DB',}
     with UseDatabase(dbconfig) as cursor:
         _SQL = "INSERT INTO BmiLog (Feet, Inches, Pounds, Result, Timestamp) VALUES (%s, %s, %s, %s, %s)"
         cursor.execute(_SQL, (str(feet), str(inches), str(pounds), str(result), str(datetime.datetime.now()), ))
 
 
 def log_distance(x1, x2, y1, y2, result):
-    dbconfig = {'host': 'localhost', 'user': 'root', 'password': 'root', 'database': 'PPA2DB',}
+    dbconfig = {'host': '127.0.0.1', 'user': 'root', 'password': 'root', 'database': 'PPA2DB',}
     with UseDatabase(dbconfig) as cursor:
         _SQL = "INSERT INTO DistanceLog (X1, X2, Y1, Y2, Result, Timestamp) VALUES (%s, %s, %s, %s, %s)"
         cursor.execute(_SQL, (str(x1), str(x2), str(y1), str(y2), str(result), str(datetime.datetime.now()), ))
