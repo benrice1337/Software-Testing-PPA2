@@ -19,6 +19,7 @@ pipeline {
                 }
             }
             steps {
+                sh 'python3 setup.py install'
                 sh 'pytest'
             }
         }
