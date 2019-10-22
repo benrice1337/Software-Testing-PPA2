@@ -19,7 +19,10 @@ def bmi(feet, inches, pounds):
         appraisal = "Normal"
     elif bmi < 30:
         appraisal = "Overweight"
-    log_bmi(feet, inches, pounds, bmi)
+    try:
+        log_bmi(feet, inches, pounds, bmi)
+    except Exception as err:
+        print('Failed to log. Error: ' + str(err))
     return 'Your BMI is ' + str(bmi) + ', making you ' + appraisal
 
 
@@ -57,9 +60,11 @@ def ret_calculator(age, salary, save, goal):
 def distance(x1, x2, y1, y2):
     if not isinstance(x1, float) or not isinstance(x2, float) or not isinstance(y1, float) or not isinstance(y2, float):
         return 'Invalid input'
-    #Distance function. Also do DB stuff here, probably.
     distance = distance_calculator(x1, x2, y1, y2)
-    log_distance(x1, x2, y1, y2, distance)
+    try:
+        log_distance(x1, x2, y1, y2, distance)
+    except Exception as err:
+        print('Failed to log. Error: ' + str(err))
     return 'The distance is ' + str(distance)
 
 

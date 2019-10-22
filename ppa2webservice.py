@@ -12,8 +12,7 @@ def calc_bmi():
     inches = request.form['inches']
     pounds = request.form['pounds']
     title = 'Here are your results:'
-    results = bmi(feet, inches, pounds)
-    log_bmi(feet, inches, pounds, bmi_calculator(feet, inches, pounds))
+    results = bmi(int(feet), int(inches), int(pounds))
     return render_template('bmi_results.html', the_feet=feet, the_inches=inches, the_pounds=pounds, the_title=title, the_results=results,)
 
 
@@ -24,29 +23,36 @@ def calc_distance():
     y1 = request.form['y1']
     y2 = request.form['y2']
     title = 'Here are your results:'
-    results = distance(x1, x2, y1, y2)
-    log_distance(x1, x2, y1, y2, distance_calculator(x1, x2, y1, y2))
+    results = distance(float(x1), float(x2), float(y1), float(y2))
     return render_template('distance_results.html', the_x1=x1, the_x2=x2, the_y1=y1, the_y2=y2, the_title=title, the_results=results,)
 
 
 @app.route('/bmi')
 def get_bmi_table():
-    with UseDatabase(app.config['dbconfig']) as cursor:
-        _SQL = "SELECT Feet, Inches, Pounds, Result, Timestamp FROM BmiLog"
-        cursor.execute(_SQL)
-        contents = cursor.fetchall()
-    titles = {'Feet', 'Inches', 'Pounds', 'Result', 'Timestamp'}
-    return render_template('log.html', the_title='BMI Log', the_row_titles=titles, the_data=contents,)
+    try:
+        with UseDatabase(app.config['dbconfig']) as cursor:
+            _SQL = "SELECT Feet, Inches, Pounds, Result, Timestamp FROM BmiLog"
+            cursor.execute(_SQL)
+            contents = cursor.fetchall()
+        titles = {'Feet', 'Inches', 'Pounds', 'Result', 'Timestamp'}
+        return render_template('log.html', the_title='BMI Log', the_row_titles=titles, the_data=contents,)
+    except Exception as err:
+        print('Something went wrong: ' + str(err))
+    return 'Error'
 
 
 @app.route('/distance')
 def get_distance_table():
-    with UseDatabase(app.config['dbconfig']) as cursor:
-        _SQL = "SELECT x1, x2, y1, y2, Result, Timestamp FROM DistanceLog"
-        cursor.execute(_SQL)
-        contents = cursor.fetchall()
-    titles = {'X1', 'X2', 'Y1', 'Y2', 'Result', 'Timestamp'}
-    return render_template('log.html', the_title='Distance Log', the_row_titles=titles, the_data=contents,)
+    try:
+        with UseDatabase(app.config['dbconfig']) as cursor:
+            _SQL = "SELECT x1, x2, y1, y2, Result, Timestamp FROM DistanceLog"
+            cursor.execute(_SQL)
+            contents = cursor.fetchall()
+        titles = {'X1', 'X2', 'Y1', 'Y2', 'Result', 'Timestamp'}
+        return render_template('log.html', the_title='Distance Log', the_row_titles=titles, the_data=contents,)
+    except Exception as err:
+        print('Something went wrong: ' + str(err))
+    return 'Error'
 
 
 @app.route('/')
