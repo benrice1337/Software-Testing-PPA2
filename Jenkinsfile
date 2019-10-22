@@ -8,6 +8,7 @@ pipeline {
                 }
             }
             steps {
+                sh 'python3 mysql-connector-python-8.0.18/setup.py install'
                 sh 'python3 -m py_compile ppa1.py ppa2webservice.py'
             }
         }
